@@ -76,34 +76,37 @@
             }
         },
         methods: {
+            async getList() {
+                let res = await this.$Http.getBookList();
+                this.booklist = res.data;
+            },
+            async getBookMsg() {
+                let res = await this.$Http.getBookMsg(this.formValidateIsbn);
+
+                this.revdata = res.data.showapi_res_body.data;
+
+                this.pubdate = this.revdata.pubdate;
+                this.paper = this.revdata.paper;
+                this.format = this.revdata.format;
+                this.publisher = this.revdata.publisher;
+                this.author = this.revdata.author;
+                this.price = this.revdata.price;
+                this.page = this.revdata.page;
+                this.isbn = this.revdata.isbn;
+                this.binding = this.revdata.binding;
+                this.produce = this.revdata.produce;
+
+                this.img = this.revdata.img;
+                this.gist = this.revdata.gist;
+
+                if( res.code=== 200 ) {
+                    alert('查询成功')
+                }
+            },
             handleSubmit (name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.instance = axios.create({
-                            baseURL: 'http://123.56.166.234:8001/',
-                            timeout: 3000
-                        });
-                        this.instance.post('/restful/addbookfromisbn/', this.formValidateIsbn).then(res => {
-                            this.revdata = res.data.showapi_res_body.data;
-
-                            this.pubdate = this.revdata.pubdate;
-                            this.paper = this.revdata.paper;
-                            this.format = this.revdata.format;
-                            this.publisher = this.revdata.publisher;
-                            this.author = this.revdata.author;
-                            this.price = this.revdata.price;
-                            this.page = this.revdata.page;
-                            this.isbn = this.revdata.isbn;
-                            this.binding = this.revdata.binding;
-                            this.produce = this.revdata.produce;
-
-                            this.img = this.revdata.img;
-                            this.gist = this.revdata.gist;
-
-
-                            console.log(res.data.showapi_res_body.data);
-                            this.$Message.success('Success!');
-                        });
+                        this.getBookMsg()
                     } else {
                         this.$Message.error('Fail!');
                     }
@@ -112,10 +115,15 @@
             handleReset (name) {
                 this.$refs[name].resetFields();
             },
-            addBook() {
-                this.instance.post('/restful/addbook/', this.revdata).then(res => {
-                    this.$Message.success('Success!');
-                });
+            async addBook(){
+                let res = await this.$Http.addBookJson(
+                    this.revdata
+                );
+                if(res.code===200) {
+                    this.$Message.success('保存成功');
+                    this.getList()
+                }
+
             }
         }
     }

@@ -3,7 +3,7 @@ import service from './bookApi'
 // import {Toast} from 'vant'
 // service 循环遍历输出不同的请求方法
 let instance = axios.create({
-    baseURL:'http://localhost:8001/api',
+    baseURL:'http://123.56.166.234:8001/',
     timeout:3000
 });
 const Http = {}; // 包裹请求方法的容器

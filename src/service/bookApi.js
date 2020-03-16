@@ -10,9 +10,13 @@ const BOOK_API = {
     //     url:'/contact/new/form'
     // },
     // 新建联系人 application/json
-    addBookJson:{
+    getBookMsg:{
         method:'post',
         url:'/restful/addbookfromisbn'
+    },
+    addBookJson:{
+        method:'post',
+        url:'/restful/addbook'
     },
     // 编辑联系人
     // editContact:{

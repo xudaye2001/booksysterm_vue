@@ -14,23 +14,20 @@
 <script>
     import axios from 'axios';
 export default {
-  name: 'flexbox_test',
+  name: 'getbooklist',
   data() {
     return {
         booklist:[]
     }
   },
   created () {
-      this.instance = axios.create({
-          baseURL: 'http://123.56.166.234:8001/',
-          timeout: 3000
-      });
-      this.instance.get('/restful/booklist').then(res => {
-          console.log(res.data);
-          const data = res.data;
-          this.booklist=data;
-          console.log(this.boolist);
-      })
+      this.getList();
+  },
+  methods: {
+      async getList() {
+          let res = await this.$Http.getBookList();
+          this.booklist = res.data;
+      }
   }
 }
 </script>
