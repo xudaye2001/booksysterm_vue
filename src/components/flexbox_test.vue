@@ -1,0 +1,62 @@
+<template>
+    <div class="container-thingy">
+        <ul>
+            <li v-for="(book, index) in booklist" v-bind:key="index">
+                <p><img v-bind:src=book.img class="" alt="神圣家族" width="115" height="172"></p>
+                <p>作者:{{book.author}}</p>
+                <p>出版社:{{book.publisher}}</p>
+                <p>简介:</p>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+    import axios from 'axios';
+export default {
+  name: 'flexbox_test',
+  data() {
+    return {
+        booklist:[]
+    }
+  },
+  created () {
+      this.instance = axios.create({
+          baseURL: 'http://123.56.166.234:8001/',
+          timeout: 3000
+      });
+      this.instance.get('/restful/booklist').then(res => {
+          console.log(res.data);
+          const data = res.data;
+          this.booklist=data;
+          console.log(this.boolist);
+      })
+  }
+}
+</script>
+<style scoped>
+    ul {
+        display: flex; /*activate power*/
+        margin: 0;
+        padding: 0;
+        /*background: #ea8c8c;*/
+        list-style: none;
+        flex-wrap: wrap;
+           /*justify-content: space-around;*/
+        /*height: 500px;*/
+        /*   align-items: center;*/
+        /*   align-content: space-between;*/
+    }
+
+    li {
+        margin: 5px; /* Adds space between items */
+        /*background: #c3e2d2;*/
+        border-radius: 3px;
+    }
+
+    ul li:last-of-type {
+        /*flex-grow: 2;*/
+        align-self: flex-end;
+    }
+
+</style>
