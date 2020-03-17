@@ -26,6 +26,18 @@
   }
 </style>
 <template>
+  <div>
+  <div>
+    <Modal
+            v-model="modal1"
+            title="Common Modal dialog box title"
+            @on-ok="ok"
+            @on-cancel="cancel">
+      <p>Content of dialog</p>
+      <p>Content of dialog</p>
+      <p>Content of dialog</p>
+    </Modal>
+  </div>
   <div class="layout">
     <Layout>
 
@@ -41,9 +53,20 @@
               <Icon type="ios-keypad"></Icon>
               我的图书馆
             </MenuItem>
-            <MenuItem name="3">
-              <Icon type="ios-analytics"></Icon>
+            <MenuItem name="3" v-if="isLogin === true">
+              <Icon type="ios-analytics" ></Icon>
               用户中心
+            </MenuItem>
+            <MenuItem name="3" v-if="isLogin === false"  @click.native="modal1=true">
+              登录
+              <Modal
+                      v-model="modal1"
+                      title="login">
+              <login></login>
+              </Modal>
+            </MenuItem>
+            <MenuItem name="3" v-if="isLogin === false" >
+              注册
             </MenuItem>
           </div>
         </Menu>
@@ -56,17 +79,34 @@
             <!--                        <router-view/>-->
           </div>
         </Card>
+
       </Content>
       <Footer class="layout-footer-center">2011-2016 &copy; TalkingData</Footer>
     </Layout>
+  </div>
   </div>
 </template>
 <script>
   // eslint-disable-next-line no-unused-vars
   import tags from '../components/tags'
+  import login from "../components/login";
   export default {
     name: 'Home',
-    components: { tags }
+    data: function() {
+      return {
+        isLogin:false,
+        modal1:false
+      }
+    },
+    methods: {
+      ok () {
+        this.$Message.info('Clicked ok');
+      },
+      cancel () {
+        this.$Message.info('Clicked cancel');
+      }
+    },
+    components: { tags, login }
     // eslint-disable-next-line vue/no-unused-components
   }
 </script>

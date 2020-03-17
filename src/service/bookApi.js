@@ -27,6 +27,15 @@ const BOOK_API = {
     delBook:{
         method:'delete',
         url:'/restful/deletebook'
+    },
+    //创建角色
+    addUser:{
+        method:'post',
+        url:'/restful/adduser'
+    },
+    login:{
+        method:'post',
+        url:'/restful/login'
     }
 };
 export default BOOK_API
