@@ -39,7 +39,6 @@
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.login();
-                        this.$Modal.remove()
                         this.$Message.success('Success!');
                     } else {
                         this.$Message.error('Fail!');
@@ -48,6 +47,7 @@
             },
             async login(){
                 let res = await this.$Http.login(this.formInline, true);
+                window.localStorage.setItem("token", res.headers.token);
                 console.log(res.headers.token)
             }
         }

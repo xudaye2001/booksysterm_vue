@@ -49,22 +49,19 @@ for(let key in service){
     }
 }
 
-// // 拦截器的添加
-// // 请求拦截器
-// instance.interceptors.request.use(config=>{
-//     发起请求前做些什么
-//     Toast.loading({
-//         mask:false,
-//         duration:0,// 一直存在
-//         forbidClick:true, // 禁止点击
-//         message:'加载中...'
-//     });
-//     return config
-// },()=>{
-//     // 请求错误
-//     Toast.clear();
-//     Toast('请求错误，请求稍后重试')
-// });
+// 拦截器的添加
+// 请求拦截器
+instance.interceptors.request.use(config=>{
+    //添加token头
+    if (window.localStorage.getItem("token")) {
+        config.headers.common["token"] = localStorage.getItem("token")
+    }
+    return config
+},()=>{
+    // 请求错误
+    Toast.clear();
+    Toast('请求错误，请求稍后重试')
+});
 //
 //
 // // 响应拦截器

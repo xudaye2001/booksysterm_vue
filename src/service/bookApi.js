@@ -31,7 +31,7 @@ const BOOK_API = {
     //创建角色
     addUser:{
         method:'post',
-        url:'/restful/adduser'
+        url:'/restful/register'
     },
     login:{
         method:'post',

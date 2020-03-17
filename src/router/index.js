@@ -2,9 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import addbookfromhand from '../components/addbookfromhand'
-// eslint-disable-next-line camelcase,no-unused-vars
 import flexbox_test from '../components/getbooklist'
 import addbookfromisbn from "../components/addbookfromisbn";
+import regist from "../views/regist";
 
 Vue.use(VueRouter)
 
@@ -28,6 +28,11 @@ const routes = [
     path: '/flexbox_test',
     name: 'flexbox_test',
     component: flexbox_test
+  },
+  {
+    path: '/views/regist',
+    name: 'regist',
+    component:regist
   }
 
   // {
