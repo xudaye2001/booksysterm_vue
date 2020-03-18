@@ -16,7 +16,10 @@ const BOOK_API = {
     },
     addBookJson:{
         method:'post',
-        url:'/restful/addbook'
+        url:'/restful/tasks/addbook',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
     },
     // 编辑联系人
     // editContact:{

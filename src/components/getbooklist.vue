@@ -5,7 +5,7 @@
                 <p><img v-bind:src=book.img class="" alt="神圣家族" width="115" height="172"></p>
                 <p>作者:{{book.author}}</p>
                 <p>出版社:{{book.publisher}}</p>
-                <p>简介:</p>
+                <p>发布者:{{book.ownners[0].name}}</p>
             </li>
         </ul>
     </div>
@@ -27,6 +27,7 @@ export default {
       async getList() {
           let res = await this.$Http.getBookList();
           this.booklist = res.data;
+          console.log(res.data)
       }
   }
 }

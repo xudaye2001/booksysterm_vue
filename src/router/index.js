@@ -31,7 +31,7 @@ const routes = [
     component: flexbox_test
   },
   {
-    path: '/views/regist',
+    path: '/views/register',
     name: 'regist',
     component:regist
   },

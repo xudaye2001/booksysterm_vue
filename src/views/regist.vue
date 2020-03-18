@@ -64,9 +64,8 @@
             async regist(){
                 let res = await this.$Http.addUser(this.formValidate, true);
                 console.log(res.data);
-                console.log(res.data.rspCode);
-                if (res.data.rspCode === "000000") {
-                    await this.$router.push('/')
+                if (res.data.rsgitpCode === "000000") {
+                    this.$router.push('/')
                 }
 
             },

@@ -54,7 +54,8 @@ for(let key in service){
 instance.interceptors.request.use(config=>{
     //添加token头
     if (window.localStorage.getItem("token")) {
-        config.headers.common["token"] = localStorage.getItem("token")
+        config.headers.common["Content-Type"] = "application/x-www-form-urlencoded";
+        config.headers.common["Authorization"] = localStorage.getItem("token")
     }
     return config
 },()=>{
