@@ -5,12 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // booklist:[],
+    formInline:'',
+    count:0
   },
   mutations: {
-    // addToBookList(state, book) {
-    //   this.boolist.push()
-    // }
+    loginData(state, formInline) {
+      state.name = formInline.name;
+      state.password = formInline.password;
+    },
+    increse(){
+      this.state.count++
+    }
   },
   actions: {
   },

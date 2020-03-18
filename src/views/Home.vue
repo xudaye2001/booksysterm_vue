@@ -27,17 +27,6 @@
 </style>
 <template>
   <div>
-  <div>
-    <Modal
-            v-model="modal1"
-            title="Common Modal dialog box title"
-            @on-ok="ok"
-            @on-cancel="cancel">
-      <p>Content of dialog</p>
-      <p>Content of dialog</p>
-      <p>Content of dialog</p>
-    </Modal>
-  </div>
   <div class="layout">
     <Layout>
 
@@ -57,16 +46,11 @@
               <Icon type="ios-analytics" ></Icon>
               用户中心
             </MenuItem>
-            <MenuItem name="3" v-if="isLogin === false"  @click.native="modal1=true">
-              登录
-              <Modal
-                      v-model="modal1"
-                      title="login">
-              <login></login>
-              </Modal>
+            <MenuItem name="3" v-if="isLogin === false" >
+              <router-link to="/views/login">登录</router-link>
             </MenuItem>
             <MenuItem name="3" v-if="isLogin === false" >
-              注册
+              <router-link to="/views/register">注册</router-link>
             </MenuItem>
           </div>
         </Menu>
@@ -90,20 +74,29 @@
   // eslint-disable-next-line no-unused-vars
   import tags from '../components/tags'
   import login from "../components/login";
+  import store from '../store/index'
   export default {
     name: 'Home',
     data: function() {
       return {
         isLogin:false,
-        modal1:false
+        modal1:false,
+        store
       }
     },
+    created(){
+
+    },
     methods: {
-      ok () {
-        this.$Message.info('Clicked ok');
-      },
-      cancel () {
-        this.$Message.info('Clicked cancel');
+      async login(){
+        console.log("执行请求");
+        console.log(store.state.formInline)
+        let res = await this.$Http.login(store.state.formInline, true);
+        console.log(res)
+        if (res.data.status === "ok") {
+          window.localStorage.setItem("token", res.headers.token);
+          this.$Message.info(res.data)
+        }
       }
     },
     components: { tags, login }

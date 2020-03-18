@@ -5,6 +5,7 @@ import addbookfromhand from '../components/addbookfromhand'
 import flexbox_test from '../components/getbooklist'
 import addbookfromisbn from "../components/addbookfromisbn";
 import regist from "../views/regist";
+import login from "../components/login";
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/views/regist',
     name: 'regist',
     component:regist
+  },
+  {
+    path:'/views/login',
+    name: 'login',
+    component:login
   }
 
   // {
