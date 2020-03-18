@@ -64,7 +64,8 @@
             async regist(){
                 let res = await this.$Http.addUser(this.formValidate, true);
                 console.log(res.data);
-                if (res.data.rsgitpCode === "000000") {
+                if (res.data.rspCode === "000000") {
+                    this.$Message.success('注册成功!');
                     this.$router.push('/')
                 }
 
@@ -73,9 +74,8 @@
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.regist();
-                        this.$Message.success('Success!');
                     } else {
-                        this.$Message.error('Fail!');
+                        this.$Message.error('验证失败!');
                     }
                 })
             },

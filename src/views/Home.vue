@@ -49,9 +49,6 @@
             <MenuItem name="3" v-if="isLogin === false" >
               <router-link to="/views/login">登录</router-link>
             </MenuItem>
-            <MenuItem name="3" v-if="isLogin === false" >
-              <router-link to="/views/register">注册</router-link>
-            </MenuItem>
           </div>
         </Menu>
       </Header>

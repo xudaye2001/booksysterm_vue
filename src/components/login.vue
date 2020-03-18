@@ -14,6 +14,11 @@
             <FormItem>
                 <Button type="primary" @click="handleSubmit('formInline')">Signin</Button>
             </FormItem>
+            <FormItem>
+                <Button>
+                    <router-link to="/views/register">注册</router-link>
+                </Button>
+            </FormItem>
         </Form>
     </div>
 
