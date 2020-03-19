@@ -44,7 +44,7 @@
               </MenuItem>
               <MenuItem name="3" v-if="isLogin === true">
                 <Icon type="ios-analytics" ></Icon>
-                <router-link to="profile">{{username}}</router-link>
+                <router-link to="userprofile">{{username}}</router-link>
               </MenuItem>
               <MenuItem name="3" v-if="isLogin === false" >
                 <router-link to="login">登录</router-link>
@@ -66,12 +66,8 @@
   </div>
 </template>
 <script>
-  // eslint-disable-next-line no-unused-vars
-  // import tags from "./components/tags";
-  import login from "./components/login";
   import store from './store/index'
   export default {
-    // name: 'Home',
     data: function() {
       return {
         isLogin:false,
@@ -84,16 +80,6 @@
         this.isLogined()
     },
     methods: {
-      // async login(){
-      //   console.log("执行请求");
-      //   console.log(store.state.formInline)
-      //   let res = await this.$Http.login(store.state.formInline, true);
-      //   console.log(res);
-      //   if (res.data.status === "ok") {
-      //     window.localStorage.setItem("token", res.headers.token);
-      //     this.$Message.info(res.data)
-      //   }
-      // }
       async isLogined() {
         console.log('执行isLogin');
         if(window.localStorage.getItem("token")) {
@@ -108,19 +94,8 @@
         }
       }
     },
-    components: {  }
-    // eslint-disable-next-line vue/no-unused-components
   }
 </script>
-
-
-
-
-<!--<template>-->
-<!--  <div id="app">-->
-<!--    <router-view/>-->
-<!--  </div>-->
-<!--</template>-->
 
 <style lang="scss">
   #app {
