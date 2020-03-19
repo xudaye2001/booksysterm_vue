@@ -39,6 +39,10 @@ const BOOK_API = {
     login:{
         method:'post',
         url:'/restful/login'
+    },
+    isLogin:{
+        method:'post',
+        url:'/restful/tasks'
     }
 };
 export default BOOK_API

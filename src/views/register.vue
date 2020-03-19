@@ -30,7 +30,7 @@
 </template>
 <script>
     export default {
-        name:'regist',
+        name:'register',
         data () {
             return {
                 formValidate: {
@@ -61,7 +61,7 @@
             }
         },
         methods: {
-            async regist(){
+            async register(){
                 let res = await this.$Http.addUser(this.formValidate, true);
                 console.log(res.data);
                 if (res.data.rspCode === "000000") {
@@ -73,7 +73,7 @@
             handleSubmit (name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.regist();
+                        this.register();
                     } else {
                         this.$Message.error('验证失败!');
                     }

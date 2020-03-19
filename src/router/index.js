@@ -1,46 +1,39 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import addbookfromhand from '../components/addbookfromhand'
-import flexbox_test from '../components/getbooklist'
-import addbookfromisbn from "../components/addbookfromisbn";
-import regist from "../views/regist";
+import Home from "../views/Home";
 import login from "../components/login";
+import mylibrary from "../views/mylibrary";
+import userprofile from "../views/userprofile";
+import register from "../views/register";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '',
     name: 'Home',
     component: Home
   },
   {
-    path: '/addbookfromhand',
-    name: 'addbookfromhand',
-    component: addbookfromhand
+    path:'/mylibrary',
+    name:'mylibrary',
+    component:mylibrary
   },
   {
-    path: '/addbookfromisbn',
-    name: 'addbookfromisbn',
-    component: addbookfromisbn
+    path:'/userprofile',
+    name:'userprofile',
+    component:userprofile
   },
   {
-    path: '/flexbox_test',
-    name: 'flexbox_test',
-    component: flexbox_test
-  },
-  {
-    path: '/views/register',
-    name: 'regist',
-    component:regist
-  },
-  {
-    path:'/views/login',
-    name: 'login',
+    path:'/login',
+    name:'login',
     component:login
+  },
+  {
+    path:'/register',
+    name:'register',
+    component:register
   }
-
   // {
   //   path: '/about',
   //   name: 'About',

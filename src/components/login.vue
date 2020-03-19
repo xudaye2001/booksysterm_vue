@@ -16,7 +16,7 @@
             </FormItem>
             <FormItem>
                 <Button>
-                    <router-link to="/views/register">注册</router-link>
+                    <router-link to="register">注册</router-link>
                 </Button>
             </FormItem>
         </Form>
@@ -28,6 +28,7 @@
     // import store from ;
 
     export default {
+        name:'login',
         data () {
             return {
                 formInline: {

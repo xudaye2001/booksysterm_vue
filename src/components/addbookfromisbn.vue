@@ -120,6 +120,7 @@
                     this.revdata
                 );
                 if(res.code===200) {
+                    console.log('保存成功')
                     this.$Message.success('保存成功');
                     this.getList()
                 }
