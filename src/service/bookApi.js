@@ -1,4 +1,8 @@
+import store from "../store";
+
+
 const BOOK_API = {
+
     // 获取联系人列表
     getBookList:{
         method:'get',
@@ -43,6 +47,11 @@ const BOOK_API = {
     isLogin:{
         method:'post',
         url:'/restful/tasks'
+    },
+
+    getBookDetails: {
+        method:'get',
+        url:'/restful/bookdetails/',
     }
 };
 export default BOOK_API

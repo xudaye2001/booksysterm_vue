@@ -5,6 +5,7 @@ import login from "../components/login";
 import mylibrary from "../views/mylibrary";
 import userprofile from "../views/userprofile";
 import register from "../views/register";
+import BookDetails from "../views/BookDetails";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path:'/register',
     name:'register',
     component:register
+  },
+  {
+    path:'/:id',
+    name:'bookdetails',
+    component: BookDetails
   }
   // {
   //   path: '/about',

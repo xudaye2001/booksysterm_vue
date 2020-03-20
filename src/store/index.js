@@ -6,16 +6,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     formInline:'',
-    count:0
+    bookId:0,
   },
   mutations: {
     loginData(state, formInline) {
       state.name = formInline.name;
       state.password = formInline.password;
     },
-    increse(){
-      this.state.count++
-    }
+    setBookId(state, bookId) {
+      state.bookId = bookId
+    },
   },
   actions: {
   },
